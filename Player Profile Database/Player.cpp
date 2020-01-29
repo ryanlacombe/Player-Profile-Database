@@ -43,13 +43,15 @@ void Player::save()
 	ofs.close();
 }
 
-void Player::load()
+bool Player::load()
 {
 	std::ifstream ifs("test.txt", std::ifstream::in);
+
 
 	ifs >> playerName;
 	ifs >> playerScore;
 
-	std::cout << playerName << std::endl;
-	std::cout << playerScore;
+	return ifs.operator bool();
+
+	ifs.close();
 }

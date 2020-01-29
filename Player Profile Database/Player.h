@@ -11,7 +11,7 @@ public:
 
 	void playerInput();
 	void save();
-	void load();
+	bool load();
 
 private:
 	char playerName[30];

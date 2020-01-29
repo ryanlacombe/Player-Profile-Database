@@ -6,7 +6,18 @@
 int main()
 {
 	Player game;
+	bool loadSuccess = game.load();
 
+	if (loadSuccess)
+	{
+		std::cout << "File found and loaded..." << std::endl;		
+	}
+	else
+	{
+		std::cout << "No file found. Creating new file..." << std::endl;
+		game.save();
+	}
 	game.playerInput();
-	game.load();
+	game.save();
+	
 }
