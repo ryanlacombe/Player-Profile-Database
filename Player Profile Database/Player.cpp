@@ -7,6 +7,11 @@ Player::Player()
 
 }
 
+Player::Player(char name[30], int score)
+{
+
+}
+
 
 Player::~Player()
 {
@@ -31,14 +36,30 @@ void Player::playerInput()
 	std::cin.ignore(std::cin.rdbuf()->in_avail());
 	std::cin >> numberInput;
 	playerScore = numberInput;
+
+	add();
+}
+
+char Player::getName()
+{
+	return playerName[30];
+}
+
+int Player::getScore()
+{
+	return playerScore;
 }
 
 void Player::save()
 {
 	std::ofstream ofs("test.txt", std::ofstream::out);
 
-	ofs << playerName << std::endl;
-	ofs << playerScore;
+	ofs << dataLength << std::endl;
+	for (int i = 0; i < playerData->dataLength; i++)
+	{
+		ofs << playerData[i].getName() << std::endl;
+		ofs << playerData[i].getScore() << std::endl;
+	}
 
 	ofs.close();
 }
@@ -54,4 +75,50 @@ bool Player::load()
 	return ifs.operator bool();
 
 	ifs.close();
+}
+
+void Player::menu()
+{
+	char input;
+	bool gameEnd = false;
+
+
+	while (!gameEnd)
+	{
+		std::cout << std::endl;
+		std::cout << "Welcome!" << std::endl;
+		std::cout << "[1] Add New Scores" << std::endl;
+		std::cout << "[2] Search and Update a Score" << std::endl;
+		std::cout << "[3] Save Scores" << std::endl;
+		std::cout << "[4] Exit the Program" << std::endl;
+
+		std::cin >> input;
+		if (input == '1')
+		{
+			playerInput();
+		}
+		else if (input == '2')
+		{
+
+		}
+		else if (input == '3')
+		{
+			save();
+		}
+		else if (input == '4')
+		{
+			break;
+		}
+	}
+}
+
+void Player::add()
+{
+	for (int i = 0; i < playerData->dataLength; i++)
+	{
+		playerData[i] = playerData[i];
+		playerData[dataLength] = { playerName, playerScore };
+	}
+
+	dataLength++;
 }
