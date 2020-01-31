@@ -15,7 +15,7 @@ int main()
 	}*/
 	
 		std::cout << "No file found. Creating new file..." << std::endl;
-		game.save();
+		//game.save();
 	
 	game.menu();
 	

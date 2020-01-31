@@ -15,13 +15,11 @@ Container::~Container()
 
 void Container::save()
 {
-	std::ofstream ofs("test.txt", std::ofstream::out);
+	std::ofstream ofs("test.txt", std::ofstream::out, std::ofstream::trunc);
 
 	ofs << dataLength << std::endl;
 	for (int i = 0; i < dataLength; i++)
 	{
-		std::cout << playerData[i].getName() << std::endl;
-		std::cout << playerData[i].getScore() << std::endl;
 		ofs << playerData[i].getName() << std::endl;
 		ofs << playerData[i].getScore() << std::endl;
 	}
@@ -83,13 +81,13 @@ void Container::menu()
 
 void Container::add(Player player)
 {
-	Player* middleData = new Player[dataLength];
+	Player* middleData = new Player[dataLength + 1];
 
 	for (int i = 0; i < dataLength; i++)
 	{
 		middleData[i] = playerData[i];
 	}
-
+	playerData = middleData;
 	playerData[dataLength] = player;
 	dataLength++;
 }

@@ -28,7 +28,6 @@ void Player::playerInput()
 	std::cin.clear();
 	std::cin.ignore(std::cin.rdbuf()->in_avail());
 	std::cin >> playerName;
-	std::cout << playerName;
 	//strcpy_s(playerName, 30, input);
 
 	std::cout << "Please enter your score:";
@@ -39,9 +38,9 @@ void Player::playerInput()
 	playerScore = numberInput;
 }
 
-char Player::getName()
+char* Player::getName()
 {
-	return playerName[30];
+	return playerName;
 }
 
 int Player::getScore()

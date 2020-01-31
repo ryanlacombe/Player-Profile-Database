@@ -11,7 +11,7 @@ public:
 	~Player();
 
 	void playerInput();
-	char getName();
+	char* getName();
 	int getScore();
 
 private:

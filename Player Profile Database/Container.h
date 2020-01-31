@@ -15,7 +15,7 @@ public:
 
 private:
 
-	int dataLength = 1;
+	int dataLength = 0;
 	Player* playerData = new Player[dataLength];
 };
 
