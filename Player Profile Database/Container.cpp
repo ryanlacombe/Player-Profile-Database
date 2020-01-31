@@ -27,18 +27,21 @@ void Container::save()
 	ofs.close();
 }
 
-/*bool Container::load()
+bool Container::load()
 {
 	std::ifstream ifs("test.txt", std::ifstream::in);
 
 
-	ifs >> playerName;
-	ifs >> playerScore;
+	ifs >> dataLength;
+	for (int i = 0; i < dataLength; i++)
+	{
+
+	}
 
 	return ifs.operator bool();
 
 	ifs.close();
-}*/
+}
 
 void Container::menu()
 {
@@ -68,8 +71,6 @@ void Container::menu()
 		}
 		else if (input == '3')
 		{
-			Player player;
-			std::cout << player.getName();
 			save();
 		}
 		else if (input == '4')
