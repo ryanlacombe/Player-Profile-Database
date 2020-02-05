@@ -12,6 +12,8 @@ public:
 	bool load();
 	void menu();
 	void add(Player player);
+	void sort();
+	void search();
 
 private:
 

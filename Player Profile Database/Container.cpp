@@ -15,13 +15,13 @@ Container::~Container()
 
 void Container::save()
 {
-	std::ofstream ofs("test.txt", std::ofstream::out, std::ofstream::trunc);
+	std::ofstream ofs;
+	ofs.open("test.txt", std::ios::out | std::ios::trunc);
 
-	ofs << dataLength << std::endl;
+	ofs.write((char*)&dataLength, sizeof(int));
 	for (int i = 0; i < dataLength; i++)
 	{
-		ofs << playerData[i].getName() << std::endl;
-		ofs << playerData[i].getScore() << std::endl;
+		ofs.write((char*)&playerData[i], sizeof(Player));	
 	}
 
 	ofs.close();
@@ -29,21 +29,20 @@ void Container::save()
 
 bool Container::load()
 {
-	std::ifstream ifs("test.txt", std::ifstream::in);
+	std::ifstream ifs;
+	ifs.open("test.txt", std::ios::in);
 
 	char nameData[30];
 	int scoreData;
 
-	ifs >> dataLength;
+	ifs.read((char*)&dataLength, sizeof(int));
+
 	Player* loadData = new Player[dataLength];
 	for (int i = 0; i < dataLength; i++)
 	{
-		ifs >> nameData;
-		ifs >> scoreData;
-
-		loadData[i].setName(nameData);
-		loadData[i].setScore(scoreData);
+		ifs.read((char*)&loadData[i], sizeof(Player));
 	}
+	playerData = loadData;
 
 	return ifs.operator bool();
 
@@ -74,7 +73,11 @@ void Container::menu()
 		}
 		else if (input == '2')
 		{
-
+			for (int i = 0; i < dataLength; i++)
+			{
+				std::cout << playerData[i].getName() << std::endl;
+				std::cout << playerData[i].getScore() << std::endl;
+			}
 		}
 		else if (input == '3')
 		{
