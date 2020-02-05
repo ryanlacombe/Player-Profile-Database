@@ -4,12 +4,14 @@
 
 Player::Player()
 {
-
+	strcpy_s(playerName, 30, "null");
+	playerScore = 0;
 }
 
 Player::Player(char name[30], int score)
 {
-
+	strcpy_s(playerName, 30, name);
+	playerScore = score;
 }
 
 
@@ -46,4 +48,14 @@ char* Player::getName()
 int Player::getScore()
 {
 	return playerScore;
+}
+
+void Player::setName(char value[30])
+{
+	strcpy_s(playerName, 30, value);
+}
+
+void Player::setScore(int value)
+{
+	playerScore = value;
 }

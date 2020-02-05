@@ -7,15 +7,17 @@
 int main()
 {
 	Container game;
-	//bool loadSuccess = game.load();
+	bool loadSuccess = game.load();
 
-	/*if (loadSuccess)
+	if (loadSuccess)
 	{
 		std::cout << "File found and loaded..." << std::endl;		
-	}*/
-	
+	}
+	else
+	{
 		std::cout << "No file found. Creating new file..." << std::endl;
-		//game.save();
+		game.save();
+	}
 	
 	game.menu();
 	

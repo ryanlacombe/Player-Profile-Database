@@ -31,11 +31,18 @@ bool Container::load()
 {
 	std::ifstream ifs("test.txt", std::ifstream::in);
 
+	char nameData[30];
+	int scoreData;
 
 	ifs >> dataLength;
+	Player* loadData = new Player[dataLength];
 	for (int i = 0; i < dataLength; i++)
 	{
+		ifs >> nameData;
+		ifs >> scoreData;
 
+		loadData[i].setName(nameData);
+		loadData[i].setScore(scoreData);
 	}
 
 	return ifs.operator bool();
