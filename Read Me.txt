@@ -1,0 +1,11 @@
+*------------------------------------------------------------------------------------------*
+
+Double click the "Player Profile Database.exe" to run the program.
+
+When the pprogam launches, type the number corresposdning to what you wish to do and press enter to continue.
+
+	Adding a new profile requires a name and score to be entered into the program.
+
+	Searching and updating requires a name to be inputed and then asks for the new 	score.
+
+	Saving saves all current profiles.

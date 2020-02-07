@@ -18,6 +18,8 @@ int main()
 		std::cout << "No file found. Creating new file..." << std::endl;
 		game.save();
 	}
+
+	std::cout << "Welcome!" << std::endl;
 	
 	game.menu();
 	

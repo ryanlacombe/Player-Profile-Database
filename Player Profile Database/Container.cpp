@@ -58,7 +58,6 @@ void Container::menu()
 	while (!gameEnd)
 	{
 		std::cout << std::endl;
-		std::cout << "Welcome!" << std::endl;
 		std::cout << "[1] Add New Scores" << std::endl;
 		std::cout << "[2] Search and Update a Score" << std::endl;
 		std::cout << "[3] Save Scores" << std::endl;
@@ -70,6 +69,7 @@ void Container::menu()
 			Player player;
 			player.playerInput();
 			add(player);
+			save();
 		}
 		else if (input == '2')
 		{
