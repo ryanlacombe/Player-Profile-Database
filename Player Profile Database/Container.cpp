@@ -103,3 +103,74 @@ void Container::add(Player player)
 	dataLength++;
 }
 
+void Container::sort()
+{
+	int endLength = dataLength - 1;
+	int startLength = 0;
+	bool sorted = false;
+
+	while (!sorted)
+	{
+		sorted = true;
+		for (int i = startLength; i < endLength; i++)
+		{
+			int comparedString = strcmp(playerData[i].getName(), playerData[i + 1].getName());
+			if (comparedString > 0)
+			{
+				Player swapData = playerData[i];
+				playerData[i] = playerData[i + 1];
+				playerData[i + 1] = swapData;
+				sorted = false;
+			}
+		}
+		endLength--;
+
+		for (int f = endLength; f > startLength; f--)
+		{
+			int comparedString2 = strcmp(playerData[f - 1].getName(), playerData[f].getName());
+			if (comparedString2 > 0)
+			{
+				Player swapData2 = playerData[f - 1];
+				playerData[f - 1] = playerData[f];
+				playerData[f] = swapData2;
+				sorted = false;
+			}
+		}
+		startLength++;
+	}
+}
+
+void Container::search()
+{
+	char input[30] = "\0";
+	int min = 0;
+	int max = dataLength - 1;
+
+	std::cout << std::endl;
+	std::cout << "Please enter the name of the profile you wish to update: ";
+	std::cin >> input;
+
+	while (max >= min)
+	{
+		int searchData = ((min + max) / 2);
+
+		if (strcmp(playerData[searchData].getName(), input) == 0)
+		{
+			int updateInput = 0;
+
+			std::cout << "Please enter the new score: ";
+			std::cin >> updateInput;
+			playerData->setScore(updateInput);
+			min = max + 1;
+		}
+		else if (strcmp(playerData[searchData].getName(), input) < 0)
+		{
+			min = searchData + 1;
+		}
+		else if (strcmp(playerData[searchData].getName(), input) > 0)
+		{
+			max = searchData - 1;
+		}
+	}
+}
+
